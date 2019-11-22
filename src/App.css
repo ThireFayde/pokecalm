@@ -15,10 +15,10 @@
   flex-wrap: wrap;
 }
 .displaySection li{
-  font-size: 1.2em;
+  font-size: 1em;
   text-align: center;
   list-style: none;
-  width: 50%;
+  width: 25%;
 }
 .buttonSection{
   position: fixed;
