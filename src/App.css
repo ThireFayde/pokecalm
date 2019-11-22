@@ -2,12 +2,34 @@
   padding: 0;
   margin: 0;
 }
-ul{
+.displaySection p{
+  font-size: 1.5em;
+  border-bottom: solid 2px #666;
+  text-align: center;
+}
+.displaySection>div{
+  margin-bottom: 10px;
+}
+.displaySection ul{
+  display: flex;
+  flex-wrap: wrap;
+}
+.displaySection li{
+  font-size: 1.2em;
+  text-align: center;
+  list-style: none;
+  width: 50%;
+}
+.buttonSection{
+  position: fixed;
+  bottom: 0;
+}
+.buttonSection ul{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
-li{
+.buttonSection li{
   list-style: none;
   width: 23vw;
   margin-bottom: 10px;
@@ -15,13 +37,22 @@ li{
   border: 3px solid black;
   box-sizing:border-box;
 }
-label{
+.buttonSection label{
   width: 100%;
   display: block;
   height: 44px;
   text-align: center;
   line-height: 50px;
 }
-input[type=checkbox]{
+.buttonSection input[type=checkbox]{
   display: none;
+}
+
+@media screen and (min-width:500px) {
+  .displaySection li{
+    width: 25%;
+  }
+  .buttonSection li{
+    width: 15vw;
+  }
 }
