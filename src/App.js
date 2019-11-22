@@ -6,12 +6,6 @@ const typeList = require('./typeList.json');
 typeList.forEach((e,i) =>{
   typeList[i].checked = false
 })
-console.log(typeList)
-const style = []
-typeList.forEach((e,i) => {
-  style.push({});
-  style[i].background = `#${typeList[i].color}`;
-});
 
 export default class App extends React.Component{
   constructor(props){
@@ -22,11 +16,16 @@ export default class App extends React.Component{
       types : typeList,
       good : [],
       bad : [],
-      worst : []
+      worst : [],
+      style : []
     }
     this.handleTypeChange = this.handleTypeChange.bind(this)
-    
-  console.log(this.state)
+
+    typeList.forEach((e,i) => {
+      this.state.style.push({});
+      this.state.style[i].border = `3px solid #${typeList[i].color}`;
+    });
+    console.log(this.state.style)
   }
 
   handleTypeChange(e){
@@ -37,6 +36,8 @@ export default class App extends React.Component{
     let g = [];
     let b = [];
     let w = [];
+    let style = [];
+
     const typesValue = this.state.types.map((type)=>{
       if(type.id===name){
         //チェック数カウンター
@@ -48,11 +49,10 @@ export default class App extends React.Component{
         good: type.good,
         bad: type.bad,
         worst: type.worst,
-        checked:(type.id===name)? !type.checked :type.checked
+        checked:(type.id===name)? !type.checked :type.checked,
       })
     });
-    console.log(typesValue)
-    typesValue.forEach((type)=>{
+    typesValue.forEach((type,i)=>{
       if(type.checked){
         type.good.forEach((value)=>{
           g.push(value)
@@ -63,14 +63,22 @@ export default class App extends React.Component{
         type.worst.forEach((value)=>{
           w.push(value)
         })
+        console.log(i)
+        style.push({});
+        style[i].background = `#${typeList[i].color}`;
+        style[i].border = `3px solid #${typeList[i].color}`;
+      }else{
+        console.log(i)
+        style.push({});
+        style[i].background = `white`;
+        style[i].border = `3px solid #${typeList[i].color}`;
       }
     })
-    this.setState({good:g,bad:b,worst:w,checked:checkedValue,types:typesValue})
+    this.setState({good:g,bad:b,worst:w,checked:checkedValue,types:typesValue,style:style})
   }
 
   render(){
     let types = this.state.types;
-    console.log(types)
     return(
       <div>
         <div>
@@ -82,8 +90,8 @@ export default class App extends React.Component{
         {
           types.map((type,index)=>{
             return(
-              <li style={style[index]}>
-                <label >
+              <li style={this.state.style[index]}>
+                <label>
                 <input type="checkbox" name={type.id} value={type.id} checked={type.checked} onChange={this.handleTypeChange}/>
                 {type.name}
                 </label>
