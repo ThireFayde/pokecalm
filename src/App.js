@@ -83,8 +83,10 @@ export default class App extends React.Component{
           types.map((type,index)=>{
             return(
               <li style={style[index]}>
+                <label >
                 <input type="checkbox" name={type.id} value={type.id} checked={type.checked} onChange={this.handleTypeChange}/>
                 {type.name}
+                </label>
               </li>
             )
           })
