@@ -25,12 +25,12 @@ export default class App extends React.Component{
       style : []
     }
     this.handleTypeChange = this.handleTypeChange.bind(this)
+    this.handleAllRiset = this.handleAllRiset.bind(this)
 
     typeList.forEach((e,i) => {
       this.state.style.push({});
       this.state.style[i].border = `3px solid #${typeList[i].color}`;
     });
-    console.log(this.state.style)
   }
 
   handleTypeChange(e){
@@ -78,6 +78,27 @@ export default class App extends React.Component{
       }
     })
     this.setState({good:g,bad:b,worst:w,checked:checkedValue,types:typesValue,style:style})
+  }
+
+  handleAllRiset(e){
+    if(this.state.checked===0)return
+    const style = []
+    typeList.forEach((e,i) => {
+      style.push({});
+      style[i].background = `#fff`;
+      style[i].border = `3px solid #${typeList[i].color}`;
+    });
+    const typesValue = this.state.types.map((type)=>{
+      return({
+        id: type.id,
+        name: type.name,
+        good: type.good,
+        bad: type.bad,
+        worst: type.worst,
+        checked:false,
+      })
+    });
+    this.setState({good:[],bad:[],worst:[],checked:0,types:typesValue,style:style})
   }
 
   render(){
@@ -240,6 +261,9 @@ export default class App extends React.Component{
             })
           }
           </ul>
+          <div className="risetButton" onClick={this.handleAllRiset}>
+            リセット
+          </div>
         </div>
       </div>
     )
