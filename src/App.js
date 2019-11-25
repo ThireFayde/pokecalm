@@ -260,8 +260,9 @@ export default class App extends React.Component{
               )
             })
           }
+          <li className="buttonSection-risetButton" onClick={this.handleAllRiset}>リセット</li>
           </ul>
-          <div className="risetButton" onClick={this.handleAllRiset}>
+          <div className="bottom-risetButton" onClick={this.handleAllRiset}>
             リセット
           </div>
         </div>
