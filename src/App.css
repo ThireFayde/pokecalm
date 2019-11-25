@@ -4,7 +4,7 @@
   color: #333;
 }
 .displaySection p{
-  font-size: 1.25em;
+  font-size: 1em;
   border-bottom: solid 3px #666;
   text-align: center;
 }
@@ -16,7 +16,7 @@
   flex-wrap: wrap;
 }
 .displaySection li{
-  font-size: 1em;
+  font-size: 0.8em;
   text-align: center;
   list-style: none;
   width: 25%;
